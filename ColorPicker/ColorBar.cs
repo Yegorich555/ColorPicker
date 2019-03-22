@@ -70,10 +70,14 @@ namespace ColorPicker
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
-            Focus();
-            PointF mousepoint = new PointF(e.X, e.Y);
-            if (e.Button == MouseButtons.Left)
-                SetPercent(mousepoint);
+            if (!Focused)
+                Focus();
+            else
+            {
+                PointF mousepoint = new PointF(e.X, e.Y);
+                if (e.Button == MouseButtons.Left)
+                    SetPercent(mousepoint);
+            }
         }
         protected override bool ProcessDialogKey(Keys keyData)
         {
