@@ -101,9 +101,9 @@ namespace ColorPicker
 			if ((keyData & Keys.Control) == Keys.Control)
 				step = 5;
 
-			if ((keyData & Keys.Up) == Keys.Up)
+			if ((keyData & Keys.Up) == Keys.Up || (keyData & Keys.Right) == Keys.Right)
 				hue += step;
-			if ((keyData & Keys.Down) == Keys.Down)
+			else if ((keyData & Keys.Down) == Keys.Down || (keyData & Keys.Left) == Keys.Left)
 				hue -= step;
 			if (hue >= 360)
 				hue = 0;
