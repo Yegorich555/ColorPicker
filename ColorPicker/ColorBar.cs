@@ -1,48 +1,27 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
-
 
 namespace ColorPicker
 {
-	class ColorSlider : LabelRotate
+    class ColorSlider : LabelRotate
 	{
 		public event EventHandler SelectedValueChanged;
-		Orientation m_orientation = Orientation.Vertical;
-		public Orientation Orientation
-		{
-			get { return m_orientation; }
-			set { m_orientation = value; }
-		}
+        public Orientation Orientation { get; set; } = Orientation.Vertical;
 
-		public enum eNumberOfColors
+        public enum ENumberOfColors
 		{
 			Use2Colors, 
 			Use3Colors, 
 		}
-		eNumberOfColors m_numberOfColors = eNumberOfColors.Use3Colors;
-		public eNumberOfColors NumberOfColors
-		{
-			get { return m_numberOfColors; }
-			set	{ m_numberOfColors = value; }
-		}
-		public enum eValueOrientation
+        public ENumberOfColors NumberOfColors { get; set; } = ENumberOfColors.Use3Colors;
+        public enum EValueOrientation
 		{
 			MinToMax,
 			MaxToMin,
 		}
-		eValueOrientation m_valueOrientation = eValueOrientation.MinToMax;
-		public eValueOrientation ValueOrientation
-		{
-			get { return m_valueOrientation; }
-			set	{ m_valueOrientation = value; }
-		}
-		float m_percent = 0;
+        public EValueOrientation ValueOrientation { get; set; } = EValueOrientation.MinToMax;
+        float m_percent = 0;
 		public float Percent
 		{
 			get { return m_percent; }
@@ -54,34 +33,18 @@ namespace ColorPicker
 				if (value != m_percent)
 				{
 					m_percent = value;
-					if (SelectedValueChanged != null)
-						SelectedValueChanged(this, null);
-					Invalidate();
+                    SelectedValueChanged?.Invoke(this, null);
+                    Invalidate();
 				}
 
 			}
 		}
 
-		Color m_color1 = Color.Black;
-		Color m_color2 = Color.FromArgb(255,127,127,127);
-		Color m_color3 = Color.White;
-		public Color Color1
-		{
-			get { return m_color1; }
-			set { m_color1 = value; }
-		}
-		public Color Color2
-		{
-			get { return m_color2; }
-			set { m_color2 = value; }
-		}
-		public Color Color3
-		{
-			get { return m_color3; }
-			set { m_color3 = value; }
-		}
+        public Color Color1 { get; set; } = Color.Black;
+        public Color Color2 { get; set; } = Color.FromArgb(255, 127, 127, 127);
+        public Color Color3 { get; set; } = Color.White;
 
-		Padding m_barPadding = new Padding(12,5, 24, 10);
+        Padding m_barPadding = new Padding(12,5, 24, 10);
 		public Padding BarPadding
 		{
 			get { return m_barPadding; }
@@ -92,31 +55,10 @@ namespace ColorPicker
 			}
 		}
 
-		public ColorSlider()
-		{
-		}
-
-		protected override void OnGotFocus(EventArgs e)
-		{
-			base.OnGotFocus(e);
-			Invalidate();
-		}
-		protected override void OnLostFocus(EventArgs e)
-		{
-			base.OnLostFocus(e);
-			Invalidate();
-		}
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			base.OnPaint(e);
 			DrawColorBar(e.Graphics);
-			
-			if (Focused)
-			{
-				RectangleF lr = ClientRectangleF;
-				lr.Inflate(-2,-2);
-				ControlPaint.DrawFocusRectangle(e.Graphics, Util.Rect(lr));
-			}
 		}
 		protected override void OnMouseMove(MouseEventArgs e)
 		{
@@ -155,19 +97,19 @@ namespace ColorPicker
 			Percent = percent / 100;
 		}
 		protected virtual void SetPercent(PointF mousepoint)
-		{
-			RectangleF cr = ClientRectangleF;
+		{			
 			RectangleF br = BarRectangle;
-			mousepoint.X += cr.X - br.X;
-			mousepoint.Y += cr.Y - br.Y;
+			mousepoint.X += BaseRectangle.X - br.X;
+			mousepoint.Y += BaseRectangle.Y - br.Y;
 			Percent = GetPercentSet(BarRectangle, Orientation, mousepoint);
 			Refresh();
 		}
-		protected RectangleF BarRectangle
+
+		protected Rectangle BarRectangle
 		{
 			get
 			{
-				RectangleF r = ClientRectangle;
+				Rectangle r = ClientRectangle;
 				r.X			+= BarPadding.Left;
 				r.Width		-= BarPadding.Right;
 				r.Y			+= BarPadding.Top;
@@ -180,13 +122,13 @@ namespace ColorPicker
 			float percentSet = 0;
 			if (orientation == Orientation.Vertical)
 			{
-				if (m_valueOrientation == eValueOrientation.MaxToMin)
+				if (ValueOrientation == EValueOrientation.MaxToMin)
 					percentSet = 1 - ((mousepoint.Y - r.Y / r.Height) / r.Height);
 				else
 					percentSet = mousepoint.Y / r.Height;
 			}
 			if (orientation == Orientation.Horizontal)
-				if (m_valueOrientation == eValueOrientation.MaxToMin)
+				if (ValueOrientation == EValueOrientation.MaxToMin)
 					percentSet = 1 - ((mousepoint.X - r.X / r.Width) / r.Width);
 				else
 					percentSet = (mousepoint.X / r.Width);
@@ -204,7 +146,7 @@ namespace ColorPicker
 			if (orientation == Orientation.Vertical)
 			{
 				float selectorY = (float)Math.Floor(r.Top + (r.Height - (r.Height * percentSet)));
-				if (m_valueOrientation == eValueOrientation.MaxToMin)
+				if (ValueOrientation == EValueOrientation.MaxToMin)
 					selectorY = (float)Math.Floor(r.Top + (r.Height - (r.Height * percentSet)));
 				else
 					selectorY = (float)Math.Floor(r.Top + (r.Height * percentSet));
@@ -223,7 +165,7 @@ namespace ColorPicker
 			if (orientation == Orientation.Horizontal)
 			{
 				float selectorX = 0;
-				if (m_valueOrientation == eValueOrientation.MaxToMin)
+				if (ValueOrientation == EValueOrientation.MaxToMin)
 					selectorX = (float)Math.Floor(r.Left + (r.Width - (r.Width * percentSet)));
 				else
 					selectorX = (float)Math.Floor(r.Left + (r.Width * percentSet));
@@ -243,10 +185,10 @@ namespace ColorPicker
 		protected void DrawColorBar(Graphics dc)
 		{
 			RectangleF lr = BarRectangle;
-			if (m_numberOfColors == eNumberOfColors.Use2Colors)
-				Util.Draw2ColorBar(dc, lr, Orientation, m_color1, m_color2);
+			if (NumberOfColors == ENumberOfColors.Use2Colors)
+				Util.Draw2ColorBar(dc, lr, Orientation, Color1, Color2);
 			else
-				Util.Draw3ColorBar(dc, lr, Orientation, m_color1, m_color2, m_color3);
+				Util.Draw3ColorBar(dc, lr, Orientation, Color1, Color2, Color3);
 			DrawSelector(dc, lr, Orientation, (float)Percent);
 		}
 	}

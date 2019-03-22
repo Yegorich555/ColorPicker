@@ -18,7 +18,7 @@ namespace ColorPicker
 			InitializeComponent();
 			m_colorWheel.SelectedColorChanged += new EventHandler(OnWheelColorChanged);
 			m_colorBar.SelectedValueChanged += new EventHandler(OnLightnessColorChanged);
-			m_colorBar.ValueOrientation = ColorSlider.eValueOrientation.MaxToMin;
+			m_colorBar.ValueOrientation = ColorSlider.EValueOrientation.MaxToMin;
 
 		}
 

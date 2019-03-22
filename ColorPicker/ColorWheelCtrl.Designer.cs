@@ -36,6 +36,7 @@ namespace ColorPicker
             // 
             this.m_colorWheel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.m_colorWheel.Location = new System.Drawing.Point(0, 0);
+            this.m_colorWheel.Margin = new System.Windows.Forms.Padding(0);
             this.m_colorWheel.Name = "m_colorWheel";
             this.m_colorWheel.Size = new System.Drawing.Size(200, 175);
             this.m_colorWheel.TabIndex = 0;
@@ -49,8 +50,9 @@ namespace ColorPicker
             this.m_colorBar.Color3 = System.Drawing.Color.White;
             this.m_colorBar.Dock = System.Windows.Forms.DockStyle.Right;
             this.m_colorBar.Location = new System.Drawing.Point(200, 0);
+            this.m_colorBar.Margin = new System.Windows.Forms.Padding(0);
             this.m_colorBar.Name = "m_colorBar";
-            this.m_colorBar.NumberOfColors = ColorPicker.ColorSlider.eNumberOfColors.Use3Colors;
+            this.m_colorBar.NumberOfColors = ColorPicker.ColorSlider.ENumberOfColors.Use3Colors;
             this.m_colorBar.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.m_colorBar.Percent = 0F;
             this.m_colorBar.RotatePointAlignment = System.Drawing.ContentAlignment.MiddleRight;
@@ -59,7 +61,7 @@ namespace ColorPicker
             this.m_colorBar.Text = "Lightness";
             this.m_colorBar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.m_colorBar.TextAngle = 270F;
-            this.m_colorBar.ValueOrientation = ColorPicker.ColorSlider.eValueOrientation.MinToMax;
+            this.m_colorBar.ValueOrientation = ColorPicker.ColorSlider.EValueOrientation.MinToMax;
             // 
             // ColorWheelCtrl
             // 

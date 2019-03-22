@@ -75,6 +75,26 @@ namespace ColorPicker
             btn_hex.Click += (object o, EventArgs e) => Clipboard.SetText(HexInfo);
             btn_hsl.Click += (object o, EventArgs e) => Clipboard.SetText(HslInfo);
             btn_rgb.Click += (object o, EventArgs e) => Clipboard.SetText(RgbInfo);
+
+            m_infoLabel.GotFocus += InfoLabelGotFocus;
+            btn_hex.GotFocus += InfoLabelGotFocus;
+            btn_hsl.GotFocus += InfoLabelGotFocus;
+            btn_rgb.GotFocus += InfoLabelGotFocus;
+
+            m_infoLabel.LostFocus += InfoLabelLostFocus;
+            btn_hex.LostFocus += InfoLabelLostFocus;
+            btn_hsl.LostFocus += InfoLabelLostFocus;
+            btn_rgb.LostFocus += InfoLabelLostFocus;
+        }
+
+        private void InfoLabelGotFocus(object sender, EventArgs e)
+        {
+            infoLabelBorder.DrawFocus();
+        }
+
+        private void InfoLabelLostFocus(object sender, EventArgs e)
+        {
+            infoLabelBorder.DrawOffFocus();
         }
 
         void OnEyeDropperSelectionChanged(object sender, EventArgs e)

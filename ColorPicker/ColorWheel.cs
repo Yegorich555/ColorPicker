@@ -1,19 +1,15 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ColorPicker
 {
-	class ColorWheel : Control
+    class ColorWheel : BaseControl
 	{
 		public event EventHandler SelectedColorChanged;
 		
-		Color m_frameColor = Color.CadetBlue;
 		HSLColor m_selectedColor = new HSLColor(Color.BlanchedAlmond);
 		PathGradientBrush m_brush = null;
 		List<PointF> m_path = new List<PointF>();
@@ -53,12 +49,13 @@ namespace ColorPicker
 		}
 		protected override void OnPaint(PaintEventArgs e)
 		{
+            base.OnPaint(e);
+
 			using (SolidBrush b = new SolidBrush(BackColor))
 			{
 				e.Graphics.FillRectangle(b, ClientRectangle);
 			}
 			RectangleF wheelrect = WheelRectangle;
-			Util.DrawFrame(e.Graphics, wheelrect, 6, m_frameColor);
 			
 			wheelrect = ColorWheelRectangle;
 			PointF center = Util.Center(wheelrect);
@@ -72,14 +69,7 @@ namespace ColorPicker
 			}
 			e.Graphics.FillPie(m_brush, Util.Rect(wheelrect), 0, 360);
 			DrawColorSelector(e.Graphics);
-
-			if (Focused)
-			{
-				RectangleF r = WheelRectangle;
-				r.Inflate(-2,-2);
-				ControlPaint.DrawFocusRectangle(e.Graphics, Util.Rect(r));
-			}
-		}
+        }
 		protected override void OnResize(EventArgs e)
 		{
 			base.OnResize(e);

@@ -11,7 +11,7 @@ namespace ColorPicker
         public bool IsCapturing { get; set; }
     }
 
-	public class EyedropColorPicker : Control
+	public class EyedropColorPicker : BaseControl
 	{
 		public event EventHandler SelectedColorChanged;
         public event EventHandler<EventCapture> IsCaptureChanged;
@@ -87,10 +87,14 @@ namespace ColorPicker
 			}
 		}
 		protected override void OnPaint(PaintEventArgs e)
-		{
-			base.OnPaint(e);
-			Rectangle rr = ClientRectangle;
+        {
+            //Rectangle rr = ClientRectangle;
+            //Pen pen = new Pen(BackColor, 3);
+            //rr.Inflate(-1, -1);
+            //e.Graphics.DrawRectangle(pen, rr);
 
+            base.OnPaint(e);
+	
 			if (m_snapshot != null)
 			{
 				e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
@@ -105,10 +109,10 @@ namespace ColorPicker
 				{
 					PointF center = Util.Center(r);
 					Rectangle centerRect = new Rectangle(Util.Point(center), new Size(0, 0));
-					centerRect.X -= ((int)Zoom / 2 - 1);
-					centerRect.Y -= ((int)Zoom / 2 - 1);
-					centerRect.Width = (int)Zoom;
-					centerRect.Height = (int)Zoom;
+					centerRect.X -= (Zoom / 2 - 1);
+					centerRect.Y -= (Zoom / 2 - 1);
+					centerRect.Width = Zoom;
+					centerRect.Height = Zoom;
 					e.Graphics.DrawRectangle(Pens.Black, centerRect);
 
                     --centerRect.X;
@@ -124,10 +128,7 @@ namespace ColorPicker
 					e.Graphics.DrawImage(m_icon, offset, offset);
 				}
 			}
-			Pen pen = new Pen(BackColor, 3);
-			rr.Inflate(-1,-1);
-			e.Graphics.DrawRectangle(pen, rr);
-			Util.DrawFrame(e.Graphics, rr, 6, Color.CadetBlue);
+
 		}
 
 		bool isCapturing = false;

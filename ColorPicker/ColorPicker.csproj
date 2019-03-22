@@ -71,6 +71,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ButtonCtrl.cs">
       <SubType>Component</SubType>
     </Compile>

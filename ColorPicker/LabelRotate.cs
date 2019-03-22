@@ -1,9 +1,10 @@
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace ColorPicker
 {
-    public class LabelRotate : Control
+    public class LabelRotate : BaseControl
 	{
 		float m_textAngle = 0;
 		ContentAlignment m_rotatePointAlignment = ContentAlignment.MiddleCenter;
@@ -46,7 +47,6 @@ namespace ColorPicker
 			}
 		}
 
-		Color m_frameColor = Color.CadetBlue;
 		public LabelRotate()
 		{
 			SetStyle(ControlStyles.SupportsTransparentBackColor, true);
@@ -56,14 +56,12 @@ namespace ColorPicker
 		}
 		protected override void OnPaint(PaintEventArgs e)
 		{
+            base.OnPaint(e);
 			using (SolidBrush b = new SolidBrush(BackColor))
 			{
 				e.Graphics.FillRectangle(b, ClientRectangle);
 			}
 
-			RectangleF lr = ClientRectangleF;
-			Pen framepen = new Pen(m_frameColor, 1);
-			Util.DrawFrame(e.Graphics, lr, 6, m_frameColor);
 			if (Text.Length > 0)
 			{
 				StringFormat format = new StringFormat();
@@ -150,15 +148,5 @@ namespace ColorPicker
 			}
 			RaisePaintEvent(this, e);
 		}
-		protected RectangleF ClientRectangleF
-		{
-			get
-			{
-				RectangleF r = ClientRectangle;
-				r.Width -= 1;
-				r.Height -= 1;
-				return r;
-			}
-		}
-	}
+    }
 }
