@@ -1,4 +1,4 @@
-using System.Drawing;
+using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -16,6 +16,13 @@ namespace ColorPicker
             keyBoardHandler.KeyDown += KeyBoardHandler_KeyDown;
             m_colorPicker.m_eyedropColorPicker.IsCaptureChanged += (object o, EventCapture e)=> isCapturingProbe = e.IsCapturing;
            
+        }
+
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            base.OnSizeChanged(e);
+            this.Refresh();
+            //this.Update();
         }
 
         private void KeyBoardHandler_KeyDown(object sender, KeyEventArgs e)
@@ -50,13 +57,5 @@ namespace ColorPicker
 
         [DllImport("user32.dll")]
         static extern bool SetCursorPos(int X, int Y);
-
-        private void OnSelected(object sender, TabControlEventArgs e)
-        {
-            if (e.TabPage == m_knownColorsTabPage)
-                m_colorList.SelectColor(m_colorPicker.SelectedColor);
-            if (e.TabPage == m_colorTabPage)
-                m_colorPicker.SelectedColor = (Color)m_colorList.SelectedItem;
-        }
     }
 }

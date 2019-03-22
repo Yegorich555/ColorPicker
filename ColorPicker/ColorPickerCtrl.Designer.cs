@@ -30,32 +30,19 @@ namespace ColorPicker
         {
             this.components = new System.ComponentModel.Container();
             this.m_tooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.m_eyedropColorPicker = new ColorPicker.EyedropColorPicker();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.m_colorWheel = new ColorPicker.ColorWheelCtrl();
-            this.m_opacitySlider = new ColorPicker.ColorSlider();
             this.m_infoLabel = new System.Windows.Forms.RichTextBox();
             this.btn_hex = new ColorPicker.ButtonCtrl();
             this.btn_rgb = new ColorPicker.ButtonCtrl();
             this.btn_hsl = new ColorPicker.ButtonCtrl();
             this.m_colorSample = new ColorPicker.LabelRotate();
             this.m_colorTable = new ColorPicker.ColorTable();
+            this.m_eyedropColorPicker = new ColorPicker.EyedropColorPicker();
+            this.m_colorWheel = new ColorPicker.ColorWheelCtrl();
+            this.m_opacitySlider = new ColorPicker.ColorSlider();
             this.labelRotate1 = new ColorPicker.LabelRotate();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // m_eyedropColorPicker
-            // 
-            this.m_eyedropColorPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.m_eyedropColorPicker.BackColor = System.Drawing.SystemColors.Control;
-            this.m_eyedropColorPicker.Location = new System.Drawing.Point(225, 180);
-            this.m_eyedropColorPicker.Name = "m_eyedropColorPicker";
-            this.m_eyedropColorPicker.SelectedColor = System.Drawing.Color.Empty;
-            this.m_eyedropColorPicker.Size = new System.Drawing.Size(70, 65);
-            this.m_eyedropColorPicker.TabIndex = 2;
-            this.m_eyedropColorPicker.TabStop = false;
-            this.m_tooltip.SetToolTip(this.m_eyedropColorPicker, "Color Selector. Click and Drag to pick a color from the screen");
-            this.m_eyedropColorPicker.Zoom = 4;
             // 
             // panel1
             // 
@@ -65,43 +52,10 @@ namespace ColorPicker
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.m_colorWheel);
             this.panel1.Controls.Add(this.m_opacitySlider);
-            this.panel1.Location = new System.Drawing.Point(300, 4);
+            this.panel1.Location = new System.Drawing.Point(304, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(266, 314);
+            this.panel1.Size = new System.Drawing.Size(321, 331);
             this.panel1.TabIndex = 9;
-            // 
-            // m_colorWheel
-            // 
-            this.m_colorWheel.BackColor = System.Drawing.Color.Transparent;
-            this.m_colorWheel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.m_colorWheel.Location = new System.Drawing.Point(0, 0);
-            this.m_colorWheel.Margin = new System.Windows.Forms.Padding(0);
-            this.m_colorWheel.Name = "m_colorWheel";
-            this.m_colorWheel.SelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(221)))), ((int)(((byte)(179)))));
-            this.m_colorWheel.Size = new System.Drawing.Size(266, 284);
-            this.m_colorWheel.TabIndex = 12;
-            // 
-            // m_opacitySlider
-            // 
-            this.m_opacitySlider.BackColor = System.Drawing.Color.Transparent;
-            this.m_opacitySlider.BarPadding = new System.Windows.Forms.Padding(60, 12, 80, 25);
-            this.m_opacitySlider.Color1 = System.Drawing.Color.White;
-            this.m_opacitySlider.Color2 = System.Drawing.Color.Black;
-            this.m_opacitySlider.Color3 = System.Drawing.Color.Black;
-            this.m_opacitySlider.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.m_opacitySlider.Location = new System.Drawing.Point(0, 284);
-            this.m_opacitySlider.Margin = new System.Windows.Forms.Padding(3, 3, 9, 3);
-            this.m_opacitySlider.Name = "m_opacitySlider";
-            this.m_opacitySlider.NumberOfColors = ColorPicker.ColorSlider.eNumberOfColors.Use2Colors;
-            this.m_opacitySlider.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.m_opacitySlider.Percent = 1F;
-            this.m_opacitySlider.RotatePointAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.m_opacitySlider.Size = new System.Drawing.Size(266, 30);
-            this.m_opacitySlider.TabIndex = 11;
-            this.m_opacitySlider.Text = "Opacity";
-            this.m_opacitySlider.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.m_opacitySlider.TextAngle = 0F;
-            this.m_opacitySlider.ValueOrientation = ColorPicker.ColorSlider.eValueOrientation.MinToMax;
             // 
             // m_infoLabel
             // 
@@ -111,7 +65,7 @@ namespace ColorPicker
             this.m_infoLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.m_infoLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.m_infoLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.m_infoLabel.Location = new System.Drawing.Point(10, 255);
+            this.m_infoLabel.Location = new System.Drawing.Point(14, 272);
             this.m_infoLabel.Name = "m_infoLabel";
             this.m_infoLabel.ReadOnly = true;
             this.m_infoLabel.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
@@ -128,11 +82,11 @@ namespace ColorPicker
             this.btn_hex.FlatAppearance.BorderSize = 0;
             this.btn_hex.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_hex.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_hex.Location = new System.Drawing.Point(221, 296);
+            this.btn_hex.Location = new System.Drawing.Point(225, 313);
             this.btn_hex.Name = "btn_hex";
             this.btn_hex.Size = new System.Drawing.Size(75, 22);
             this.btn_hex.TabIndex = 15;
-            this.btn_hex.Text = "to buffer";
+            this.btn_hex.Text = "copy";
             this.btn_hex.UseVisualStyleBackColor = false;
             // 
             // btn_rgb
@@ -143,11 +97,11 @@ namespace ColorPicker
             this.btn_rgb.FlatAppearance.BorderSize = 0;
             this.btn_rgb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_rgb.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_rgb.Location = new System.Drawing.Point(221, 274);
+            this.btn_rgb.Location = new System.Drawing.Point(225, 291);
             this.btn_rgb.Name = "btn_rgb";
             this.btn_rgb.Size = new System.Drawing.Size(75, 22);
             this.btn_rgb.TabIndex = 14;
-            this.btn_rgb.Text = "to buffer";
+            this.btn_rgb.Text = "copy";
             this.btn_rgb.UseVisualStyleBackColor = false;
             // 
             // btn_hsl
@@ -158,17 +112,17 @@ namespace ColorPicker
             this.btn_hsl.FlatAppearance.BorderSize = 0;
             this.btn_hsl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_hsl.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_hsl.Location = new System.Drawing.Point(221, 253);
+            this.btn_hsl.Location = new System.Drawing.Point(225, 270);
             this.btn_hsl.Name = "btn_hsl";
             this.btn_hsl.Size = new System.Drawing.Size(75, 22);
             this.btn_hsl.TabIndex = 13;
-            this.btn_hsl.Text = "to buffer";
+            this.btn_hsl.Text = "copy";
             this.btn_hsl.UseVisualStyleBackColor = false;
             // 
             // m_colorSample
             // 
             this.m_colorSample.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.m_colorSample.Location = new System.Drawing.Point(1, 180);
+            this.m_colorSample.Location = new System.Drawing.Point(5, 197);
             this.m_colorSample.Name = "m_colorSample";
             this.m_colorSample.RotatePointAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.m_colorSample.Size = new System.Drawing.Size(217, 65);
@@ -325,18 +279,64 @@ namespace ColorPicker
         System.Drawing.Color.White};
             this.m_colorTable.Cols = 16;
             this.m_colorTable.FieldSize = new System.Drawing.Size(14, 14);
-            this.m_colorTable.Location = new System.Drawing.Point(1, 5);
+            this.m_colorTable.Location = new System.Drawing.Point(5, 5);
             this.m_colorTable.Name = "m_colorTable";
             this.m_colorTable.Padding = new System.Windows.Forms.Padding(9, 9, 0, 0);
             this.m_colorTable.SelectedItem = System.Drawing.Color.Black;
-            this.m_colorTable.Size = new System.Drawing.Size(293, 168);
+            this.m_colorTable.Size = new System.Drawing.Size(293, 185);
             this.m_colorTable.TabIndex = 0;
             this.m_colorTable.Text = "m_colorTable";
+            // 
+            // m_eyedropColorPicker
+            // 
+            this.m_eyedropColorPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.m_eyedropColorPicker.BackColor = System.Drawing.SystemColors.Control;
+            this.m_eyedropColorPicker.Location = new System.Drawing.Point(229, 197);
+            this.m_eyedropColorPicker.Name = "m_eyedropColorPicker";
+            this.m_eyedropColorPicker.SelectedColor = System.Drawing.Color.Empty;
+            this.m_eyedropColorPicker.Size = new System.Drawing.Size(70, 65);
+            this.m_eyedropColorPicker.TabIndex = 2;
+            this.m_eyedropColorPicker.TabStop = false;
+            this.m_tooltip.SetToolTip(this.m_eyedropColorPicker, "Color Selector. Click and Drag to pick a color from the screen");
+            this.m_eyedropColorPicker.Zoom = 4;
+            // 
+            // m_colorWheel
+            // 
+            this.m_colorWheel.BackColor = System.Drawing.Color.Transparent;
+            this.m_colorWheel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_colorWheel.Location = new System.Drawing.Point(0, 0);
+            this.m_colorWheel.Margin = new System.Windows.Forms.Padding(0);
+            this.m_colorWheel.Name = "m_colorWheel";
+            this.m_colorWheel.SelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(221)))), ((int)(((byte)(179)))));
+            this.m_colorWheel.Size = new System.Drawing.Size(321, 301);
+            this.m_colorWheel.TabIndex = 12;
+            // 
+            // m_opacitySlider
+            // 
+            this.m_opacitySlider.BackColor = System.Drawing.Color.Transparent;
+            this.m_opacitySlider.BarPadding = new System.Windows.Forms.Padding(60, 12, 80, 25);
+            this.m_opacitySlider.Color1 = System.Drawing.Color.White;
+            this.m_opacitySlider.Color2 = System.Drawing.Color.Black;
+            this.m_opacitySlider.Color3 = System.Drawing.Color.Black;
+            this.m_opacitySlider.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.m_opacitySlider.Location = new System.Drawing.Point(0, 301);
+            this.m_opacitySlider.Margin = new System.Windows.Forms.Padding(3, 3, 9, 3);
+            this.m_opacitySlider.Name = "m_opacitySlider";
+            this.m_opacitySlider.NumberOfColors = ColorPicker.ColorSlider.eNumberOfColors.Use2Colors;
+            this.m_opacitySlider.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.m_opacitySlider.Percent = 1F;
+            this.m_opacitySlider.RotatePointAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.m_opacitySlider.Size = new System.Drawing.Size(321, 30);
+            this.m_opacitySlider.TabIndex = 11;
+            this.m_opacitySlider.Text = "Opacity";
+            this.m_opacitySlider.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.m_opacitySlider.TextAngle = 0F;
+            this.m_opacitySlider.ValueOrientation = ColorPicker.ColorSlider.eValueOrientation.MinToMax;
             // 
             // labelRotate1
             // 
             this.labelRotate1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelRotate1.Location = new System.Drawing.Point(0, 253);
+            this.labelRotate1.Location = new System.Drawing.Point(4, 270);
             this.labelRotate1.Name = "labelRotate1";
             this.labelRotate1.RotatePointAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelRotate1.Size = new System.Drawing.Size(295, 65);
@@ -359,7 +359,7 @@ namespace ColorPicker
             this.Controls.Add(this.labelRotate1);
             this.Name = "ColorPickerCtrl";
             this.Padding = new System.Windows.Forms.Padding(3, 3, 0, 0);
-            this.Size = new System.Drawing.Size(577, 326);
+            this.Size = new System.Drawing.Size(632, 343);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
